@@ -100,10 +100,8 @@ const calculateScores = (games: Game[]): Team[] => {
   });
   const results: Team[] = [];
   for (const team in teams) {
-    if (Object.prototype.hasOwnProperty.call(teams, team)) {
-      const points = teams[team];
-      results.push({ name: team, points });
-    }
+    const points = teams[team];
+    results.push({ name: team, points });
   }
   return results;
 };
