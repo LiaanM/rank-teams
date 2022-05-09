@@ -18,11 +18,11 @@ import { Team } from '../types/team';
  * const ranked = rank(`Lions 3, Snakes 3\nTarantulas 1, FC Awesome 0`);
  * console.log(const)
  * // => [
- * {name: "Tarantulas", points: 3},
- * {name: "Lions", points:1},
- * {name: "Snakes", points:1},
- * {name: "FC Awesome", points:0}
- * ]
+ * // => {name: "Tarantulas", points: 3},
+ * // => {name: "Lions", points:1},
+ * // => {name: "Snakes", points:1},
+ * // => {name: "FC Awesome", points:0}
+ * // => ]
  * ```
  *
  * ### Example (commonjs)
@@ -30,12 +30,12 @@ import { Team } from '../types/team';
  * var rank = require('rank-teams').rank;
  * const ranked = rank(`Lions 3, Snakes 3\nTarantulas 1, FC Awesome 0`);
  * console.log(const)
- * // => [
- * {name: "Tarantulas", points: 3},
- * {name: "Lions", points:1},
- * {name: "Snakes", points:1},
- * {name: "FC Awesome", points:0}
- * ]
+ *  // => [
+ *  // => {name: "Tarantulas", points: 3},
+ *  // => {name: "Lions", points:1},
+ *  // => {name: "Snakes", points:1},
+ *  // => {name: "FC Awesome", points:0}
+ *  // => ]
  * ```
  *
  * @param input - String containing lines for each game: "{team1_name} {score},{team2_name} {score}\n"
@@ -65,7 +65,6 @@ const parse = (input: string): Game[] => {
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed) continue;
-    if (trimmed == '') continue;
     const results = trimmed.split(',');
     const teamA = results[0].match(/([^0-9]+)(\s\d+$)/);
     const teamB = results[1].match(/([^0-9]+)(\s\d+$)/);
